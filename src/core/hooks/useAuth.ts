@@ -1,6 +1,6 @@
 import auth from '@react-native-firebase/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getSavedCredentials, saveCredentials } from '../services/Credentials ';
+import { getSavedCredentials, saveCredentials } from '../services/credentials ';
 import { isBiometricAvailable, promptBiometric } from '../services/biometrics';
 import { useUserContext } from '../context/UserContext';
 

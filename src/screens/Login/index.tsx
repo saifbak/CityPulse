@@ -5,7 +5,7 @@ import { Formik } from 'formik';
 import { ScaledSheet } from 'react-native-size-matters';
 import useAuth from '../../core/hooks/useAuth';
 import { AuthStackParamList } from '../../core/types/navigation.types';
-import { LoginSchema } from '../../core/schema/login.schema';
+import { LoginSchema } from '../../core/schema/loginValidation.schema';
 import FormTextInput from '../../components/FormTextInput';
 import { Icons } from '../../assets';
 import { useLocalizationContext } from '../../core/context/LocalizationContext';
@@ -14,7 +14,7 @@ const LoginScreen: FC = () => {
     const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
     const { signIn, biometricLogin } = useAuth();
     const { translate, language } = useLocalizationContext();
-    
+
     const handleBio = async () => {
         const response = await biometricLogin();
         if (!response) Alert.alert(translate('login.biometric'));

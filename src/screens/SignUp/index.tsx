@@ -5,7 +5,7 @@ import { Formik } from 'formik';
 import { ScaledSheet } from 'react-native-size-matters';
 
 import useAuth from '../../core/hooks/useAuth';
-import { SignUpSchema } from '../../core/schema/signup.schema';
+import { SignUpSchema } from '../../core/schema/signupValidation.schema';
 import { RootStackParamList } from '../../navigation/RootNavigator';
 import FormTextInput from '../../components/FormTextInput';
 import { useLocalizationContext } from '../../core/context/LocalizationContext';
