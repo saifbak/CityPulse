@@ -1,132 +1,145 @@
-# CityPulse - Event Discovery App
+# 🌆 City Pulse – Local Events Explorer
 
-CityPulse is a React Native application that helps users discover and track local events. The app supports both English and Arabic languages with full RTL support.
+City Pulse is a modern React Native mobile app that helps users discover, bookmark, and explore local events. Built with Firebase authentication, a clean splash experience, and dynamic navigation, it's designed to be fast, responsive, and engaging.
 
-## Features
+---
 
-- 🌍 Bilingual Support (English/Arabic) with RTL
-- 🎫 Event Discovery and Details
-- 🗺️ Event Map View
-- ⭐ Favorite Events System
-- 👤 User Authentication
-- 🔍 Event Search
 
-## Prerequisites
 
-- Node.js (v14 or newer)
-- npm or yarn
-- React Native development environment
-- Xcode (for iOS development)
-- Android Studio (for Android development)
-- Firebase project setup
+---
 
-## Installation
+## 📱 App Screenshots
 
-1. Clone the repository:
-   ```bash
-   git clone [your-repository-url]
-   cd CityPulse
-   ```
+| Splash Screen | Login Page | Home Page |
+| ------------- | ---------- | --------- |
+|               |            |           |
 
-2. Install dependencies:
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
+> 💡 Tip: Store your screenshots under `assets/screenshots/` and update paths accordingly.
 
-3. iOS specific setup:
-   ```bash
-   cd ios
-   bundle install
-   bundle exec pod install
-   cd ..
-   ```
+---
 
-4. Configure Firebase:
-   - Add `google-services.json` to `android/app/`
-   - Add `GoogleService-Info.plist` to your iOS project
+## 🌐 Live Demo
 
-## Running the App
+🚧 *Currently not hosted live. You can run the app locally using the instructions below.*
 
-### Start Metro Server
+---
+
+## 📆 Tech Stack
+
+- ⚛️ **React Native** – Cross-platform mobile development
+- 🔥 **Firebase Auth** – Secure authentication
+- 🚦 **React Navigation** – Stack & Tab navigation
+- 🌍 **Context API** – Global user state management
+- ⏳ **Splash Logic** – 1-second guaranteed display
+
+---
+
+## ✨ Getting Started
+
+### 1. Clone the Repository
+
 ```bash
-npm start
-# or
-yarn start
+git clone https://github.com/your-username/city-pulse-app.git
+cd city-pulse-app
 ```
 
-### iOS
+### 2. Install Dependencies
+
 ```bash
-npm run ios
+yarn install
 # or
-yarn ios
+npm install
 ```
 
-### Android
-```bash
-npm run android
-# or
-yarn android
+### 3. Setup Firebase
+
+- Create a Firebase project
+- Enable **Email/Password** authentication
+- Download and place:
+  - `google-services.json` in `android/app/`
+  - `GoogleService-Info.plist` in `ios/`
+
+---
+
+## 🔧 Firebase + Splash Logic
+
+`UserContext.tsx` ensures:
+
+- Auth state is checked on app launch
+- Splash screen is shown for **minimum 1 second**:
+
+```tsx
+useEffect(() => {
+  const delay = new Promise(res => setTimeout(res, 1000));
+  const authCheck = new Promise<void>((res) => {
+    const sub = auth().onAuthStateChanged((fbUser) => {
+      setUser(fbUser);
+      res();
+    });
+    return () => sub();
+  });
+
+  Promise.all([delay, authCheck]).then(() => setInitialising(false));
+}, []);
 ```
 
-## Project Structure
+---
+
+## 📂 Folder Structure
 
 ```
-src/
-├── assets/         # Images and static assets
-├── components/     # Reusable UI components
+project-root/
+│
+├── navigation/
+│   ├── RootNavigator.tsx
+│   ├── AuthStack.tsx
+│   └── MainTab.tsx
+│
+├── screens/
+│   ├── Splash.tsx
+│   ├── Login.tsx
+│   └── Home.tsx
+│
 ├── core/
-│   ├── context/    # React Context providers
-│   ├── hooks/      # Custom React hooks
-│   ├── i18n/       # Internationalization setup
-│   ├── services/   # API and external services
-│   ├── store/      # State management
-│   └── utils/      # Helper functions
-├── navigation/     # Navigation configuration
-└── screens/        # App screens
+│   └── context/
+│       └── UserContext.tsx
+├── assets/
+│   └── logo-citypulse.png
+│   └── screenshots/
+├── App.tsx
+└── README.md
 ```
 
-## Key Features Implementation
+---
 
-### Internationalization
+## 📊 Future Enhancements
 
-The app uses `i18n-js` and `react-native-localize` for language management:
-- Language switching with RTL support
-- Automatic language detection
-- Translation fallbacks
+- 🔒 Biometric Login (Face ID / Fingerprint)
+- 🗘️ Event location preview with Maps
+- 🌑 Light/Dark theme toggle
+- 🌐 RTL & Arabic support
 
-### Navigation
+---
 
-Implemented using React Navigation with:
-- Authentication flow
-- Bottom tab navigation
-- Stack navigation for screens
+## 🧑‍💻 Author
 
-### State Management
+**Saif Bin Abdulkarim**\
+Senior Mobile Developer | React Native Specialist\
+🌝 UAE | 🇵🇰 + 🇾🇪 roots\
+📧 [Your Email or Portfolio Link]
 
-- React Context for global state
-- Custom hooks for business logic
+---
 
-### Troubleshooting
+## 📄 License
 
-#### Language/RTL Issues
-- Clear app cache and restart
-- Ensure all translations are properly set up in `src/core/i18n/translations`
-- Check RTL support in custom components
+MIT License – feel free to fork and use!
 
-#### Build Issues
-- For iOS, ensure CocoaPods is properly installed and run `bundle exec pod install`
-- For Android, check your Android SDK setup and Gradle configuration
+---
 
-## Contributing
+## 🔗 Connect
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+- GitHub: [github.com/your-username](https://github.com/your-username)
+- LinkedIn: [linkedin.com/in/your-profile](https://linkedin.com/in/your-profile)
 
-## License
+---
 
-This project is licensed under the MIT License - see the LICENSE file for details
