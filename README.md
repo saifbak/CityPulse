@@ -22,9 +22,9 @@ City Pulse is a modern React Native mobile app that helps users discover, bookma
 
 ## 📹 Demo Video
 
-preview it here:
+Click the link below to watch the full walkthrough of the app:
 
-<video src="https://res.cloudinary.com/dd3t2lri7/video/upload/v1752482974/walkthrough_s3yeov.mp4" controls width="100%" />
+🔗 [Watch Demo Video](https://res.cloudinary.com/dd3t2lri7/video/upload/v1752482974/walkthrough_s3yeov.mp4)
 
 
 ## 🌐 Live Demo
