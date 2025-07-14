@@ -26,11 +26,13 @@ City Pulse is a modern React Native mobile app that helps users discover, bookma
 
 ## 📆 Tech Stack
 
-- ⚛️ **React Native** – Cross-platform mobile development
-- 🔥 **Firebase Auth** – Secure authentication
+- ⚛️ **React Native** – Cross‑platform mobile development
+- 🔥 **Firebase Auth** – Secure authentication (Email/Password & **Fingerprint/Biometric**)
 - 🚦 **React Navigation** – Stack & Tab navigation
 - 🌍 **Context API** – Global user state management
-- ⏳ **Splash Logic** – 1-second guaranteed display
+- 🌐 **RTL Support** – Built‑in right‑to‑left layout handling (Arabic ready)
+- ⏳ **Splash Logic** – 1‑second guaranteed display
+- 📍 **Event Location Preview** – View map previews for events
 
 ---
 
@@ -90,34 +92,80 @@ useEffect(() => {
 ```
 project-root/
 │
-├── navigation/
-│   ├── RootNavigator.tsx
-│   ├── AuthStack.tsx
-│   └── MainTab.tsx
-│
-├── screens/
-│   ├── Splash.tsx
-│   ├── Login.tsx
-│   └── Home.tsx
-│
-├── core/
-│   └── context/
-│       └── UserContext.tsx
-├── assets/
-│   └── logo-citypulse.png
-│   └── screenshots/
-├── App.tsx
-└── README.md
+├── src/
+│   ├── assets/
+│   │   ├── bookmark.png
+│   │   ├── fingerprint.png
+│   │   ├── home.png
+│   │   ├── left-arrow.png
+│   │   ├── right-arrow.png
+│   │   ├── star.png
+│   │   ├── unstar.png
+│   │   ├── user.png
+│   │   └── logo.png
+│   │
+│   ├── components/
+│   │   ├── Button.tsx
+│   │   ├── Card.tsx
+│   │   ├── FormTextInput.tsx
+│   │   ├── Header.tsx
+│   │   ├── LanguageSelector.tsx
+│   │   ├── Loader.tsx
+│   │   └── SearchBar.tsx
+│   │
+│   ├── core/
+│   │   ├── context/
+│   │   │   ├── UserContext.tsx
+│   │   │   └── LocalizationContext.tsx
+│   │   ├── hooks/
+│   │   │   ├── useAuth.ts
+│   │   │   ├── useEventsQuery.ts
+│   │   │   ├── useFavorite.ts
+│   │   │   ├── useInfiniteEvents.ts
+│   │   │   └── useLocalization.ts
+│   │   ├── i18n/
+│   │   │   └── translations/
+│   │   │       └── index.ts
+│   │   ├── schema/
+│   │   │   ├── login.schema.ts
+│   │   │   └── signup.schema.ts
+│   │   ├── services/
+│   │   │   ├── api.ts
+│   │   │   ├── biometrics.ts
+│   │   │   ├── Credentials.ts
+│   │   │   └── storage.ts
+│   │   ├── store/
+│   │   ├── types/
+│   │   │   └── navigation.types.ts
+│   │   └── utils/
+│   │       └── helper.ts
+│   │
+│   ├── navigation/
+│   │   ├── AuthStack.tsx
+│   │   ├── HomeStack.tsx
+│   │   ├── MainTab.tsx
+│   │   └── RootNavigator.tsx
+│   │
+│   ├── screens/
+│   │   ├── EventDetails/
+│   │   │   └── index.tsx
+│   │   ├── Favorite/
+│   │   ├── Home/
+│   │   ├── Login/
+│   │   ├── Profile/
+│   │   ├── SignUp/
+│   │   └── Splash/
+│   │
+│   └── App.tsx
+├── android/
+├── ios
 ```
 
 ---
 
 ## 📊 Future Enhancements
 
-- 🔒 Biometric Login (Face ID / Fingerprint)
-- 🗘️ Event location preview with Maps
-- 🌑 Light/Dark theme toggle
-- 🌐 RTL & Arabic support
+- 🌓 Light/Dark theme toggle
 
 ---
 
@@ -125,8 +173,7 @@ project-root/
 
 **Saif Bin Abdulkarim**\
 Senior Mobile Developer | React Native Specialist\
-🌝 UAE | 🇵🇰 + 🇾🇪 roots\
-📧 [Your Email or Portfolio Link]
+🌝 UAE 
 
 ---
 
@@ -138,8 +185,8 @@ MIT License – feel free to fork and use!
 
 ## 🔗 Connect
 
-- GitHub: [github.com/your-username](https://github.com/your-username)
-- LinkedIn: [linkedin.com/in/your-profile](https://linkedin.com/in/your-profile)
+- GitHub: [github.com/](https://github.com/your-username)saifbak
+- LinkedIn: [linkedin.com/in/](https://linkedin.com/in/your-profile)saifbinabdulkarim
 
 ---
 
