@@ -4,10 +4,6 @@ City Pulse is a modern React Native mobile app that helps users discover, bookma
 
 ---
 
-
-
----
-
 ## 📱 App Screenshots
 
 ### LTR (English UI)
@@ -20,15 +16,8 @@ City Pulse is a modern React Native mobile app that helps users discover, bookma
 
 | تسجيل الدخول | إنشاء حساب | الصفحة الرئيسية | تفاصيل الفعالية | الملف الشخصي |
 | ------------ | ---------- | --------------- | --------------- | ------------ |
-|              |            |                 |                 |              |
+| ![](./assets/screenshots/login_rtl.png) | ![](./assets/screenshots/signup_rtl.png) | ![](./assets/screenshots/home_rtl.png) | ![](./assets/screenshots/details_rtl.png) | ![](./assets/screenshots/profile_rtl.png) |
 
-> 💡 Tip: Store your screenshots under `assets/screenshots/` and update paths accordingly.
-
-\------------- | ---------- | --------- | |               |            |           |
-
-> 💡 Tip: Store your screenshots under `assets/screenshots/` and update paths accordingly.
-
----
 
 ## 🌐 Live Demo
 
@@ -36,15 +25,16 @@ City Pulse is a modern React Native mobile app that helps users discover, bookma
 
 ---
 
-## 📆 Tech Stack
+## 🗖 Tech Stack
 
-- ⚛️ **React Native** – Cross‑platform mobile development
-- 🔥 **Firebase Auth** – Secure authentication (Email/Password & **Fingerprint/Biometric**)
-- 🚦 **React Navigation** – Stack & Tab navigation
-- 🌍 **Context API** – Global user state management
-- 🌐 **RTL Support** – Built‑in right‑to‑left layout handling (Arabic ready)
-- ⏳ **Splash Logic** – 1‑second guaranteed display
-- 📍 **Event Location Preview** – View map previews for events
+* ⚛️ **React Native** – Cross‑platform mobile development
+* 🔥 **Firebase Auth** – Secure authentication (Email/Password & **Fingerprint/Biometric**)
+* 🚦 **React Navigation** – Stack & Tab navigation
+* 🌍 **Context API** – Global user state management
+* 🌐 **RTL Support** – Built‑in right‑to‑left layout handling (Arabic ready)
+* ⏳ **Splash Logic** – 1‑second guaranteed display
+* 🎫 **Ticketmaster Public API** – Fetching live event data
+* 📍 **Event Location Preview** – Map preview is embedded in the event details screen
 
 ---
 
@@ -67,11 +57,63 @@ npm install
 
 ### 3. Setup Firebase
 
-- Create a Firebase project
-- Enable **Email/Password** authentication
-- Download and place:
-  - `google-services.json` in `android/app/`
-  - `GoogleService-Info.plist` in `ios/`
+* Create a Firebase project from the [Firebase Console](https://console.firebase.google.com/)
+* Enable **Email/Password Authentication** under Authentication > Sign-in method
+* Add your app to Firebase for both Android and iOS
+
+#### 🔧 Android Firebase Setup
+
+* Download `google-services.json` from Firebase Console and place it in `android/app/`
+* Add the following to `android/build.gradle`:
+
+```gradle
+classpath 'com.google.gms:google-services:4.3.15' // under dependencies
+```
+
+* And in `android/app/build.gradle`, add:
+
+```gradle
+apply plugin: 'com.google.gms.google-services'
+```
+
+#### 🍏 iOS Firebase Setup
+
+* Download `GoogleService-Info.plist` and place it in `ios/`
+* Open Xcode → drag the `.plist` file into the project (ensure "Copy if needed" is checked)
+* Add the Firebase iOS SDK if not already installed:
+
+```bash
+cd ios
+pod install
+cd ..
+```
+
+### 4. Setup React Native Biometric (Optional for fingerprint login)
+
+```bash
+yarn add react-native-biometrics
+```
+
+> ✅ For iOS: Run `pod install` in the `ios` directory after installing ✅ For Android: No extra steps needed
+
+### 5. Setup React Native Keychain (for secure credential storage)
+
+```bash
+yarn add react-native-keychain
+cd ios && pod install && cd ..
+```
+
+> 📌 iOS requires Keychain Sharing to be enabled in Xcode under "Signing & Capabilities"
+
+### 6. Final Setup
+
+* Run the app on your device or simulator:
+
+```bash
+npx react-native run-android
+# or
+npx react-native run-ios
+```
 
 ---
 
@@ -79,8 +121,8 @@ npm install
 
 `UserContext.tsx` ensures:
 
-- Auth state is checked on app launch
-- Splash screen is shown for **minimum 1 second**:
+* Auth state is checked on app launch
+* Splash screen is shown for **minimum 1 second**:
 
 ```tsx
 useEffect(() => {
@@ -177,14 +219,14 @@ project-root/
 
 ## 📊 Future Enhancements
 
-- 🌓 Light/Dark theme toggle
+* 🌃 Light/Dark theme toggle
 
 ---
 
 ## 🧑‍💻 Author
 
-**Saif Bin Abdulkarim**\
-Senior Mobile Developer | React Native Specialist\
+**Saif Bin Abdulkarim**
+Senior Mobile Developer | React Native Specialist
 🌝 UAE 
 
 ---
@@ -197,8 +239,7 @@ MIT License – feel free to fork and use!
 
 ## 🔗 Connect
 
-- GitHub: [github.com/](https://github.com/your-username)saifbak
-- LinkedIn: [linkedin.com/in/](https://linkedin.com/in/your-profile)saifbinabdulkarim
+* GitHub: [github.com/](https://github.com/your-username)saifbak
+* LinkedIn: [linkedin.com/in/](https://linkedin.com/in/your-profile)saifbinabdulkarim
 
 ---
-
