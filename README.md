@@ -22,13 +22,6 @@ City Pulse is a modern React Native mobile app that helps users discover, bookma
 | ------------ | ---------- | --------------- | --------------- | ------------ |
 | ![](./assets/screenshots/login_rtl.png) | ![](./assets/screenshots/signup_rtl.png) | ![](./assets/screenshots/home_rtl.png) | ![](./assets/screenshots/details_rtl.png) | ![](./assets/screenshots/profile_rtl.png) |
 
-> 💡 Tip: Store your screenshots under `assets/screenshots/` and update paths accordingly.
-
-\------------- | ---------- | --------- | |               |            |           |
-
-> 💡 Tip: Store your screenshots under `assets/screenshots/` and update paths accordingly.
-
----
 
 ## 🌐 Live Demo
 
