@@ -1,98 +1,132 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# CityPulse - Event Discovery App
 
-# Getting Started
+CityPulse is a React Native application that helps users discover and track local events. The app supports both English and Arabic languages with full RTL support.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Features
 
-## Step 1: Start Metro
+- 🌍 Bilingual Support (English/Arabic) with RTL
+- 🎫 Event Discovery and Details
+- 🗺️ Event Map View
+- ⭐ Favorite Events System
+- 👤 User Authentication
+- 🔍 Event Search
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Prerequisites
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+- Node.js (v14 or newer)
+- npm or yarn
+- React Native development environment
+- Xcode (for iOS development)
+- Android Studio (for Android development)
+- Firebase project setup
 
-```sh
-# Using npm
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone [your-repository-url]
+   cd CityPulse
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. iOS specific setup:
+   ```bash
+   cd ios
+   bundle install
+   bundle exec pod install
+   cd ..
+   ```
+
+4. Configure Firebase:
+   - Add `google-services.json` to `android/app/`
+   - Add `GoogleService-Info.plist` to your iOS project
+
+## Running the App
+
+### Start Metro Server
+```bash
 npm start
-
-# OR using Yarn
+# or
 yarn start
 ```
 
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
 ### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+```bash
 npm run ios
-
-# OR using Yarn
+# or
 yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+### Android
+```bash
+npm run android
+# or
+yarn android
+```
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+## Project Structure
 
-## Step 3: Modify your app
+```
+src/
+├── assets/         # Images and static assets
+├── components/     # Reusable UI components
+├── core/
+│   ├── context/    # React Context providers
+│   ├── hooks/      # Custom React hooks
+│   ├── i18n/       # Internationalization setup
+│   ├── services/   # API and external services
+│   ├── store/      # State management
+│   └── utils/      # Helper functions
+├── navigation/     # Navigation configuration
+└── screens/        # App screens
+```
 
-Now that you have successfully run the app, let's make changes!
+## Key Features Implementation
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+### Internationalization
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+The app uses `i18n-js` and `react-native-localize` for language management:
+- Language switching with RTL support
+- Automatic language detection
+- Translation fallbacks
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+### Navigation
 
-## Congratulations! :tada:
+Implemented using React Navigation with:
+- Authentication flow
+- Bottom tab navigation
+- Stack navigation for screens
 
-You've successfully run and modified your React Native App. :partying_face:
+### State Management
 
-### Now what?
+- React Context for global state
+- Custom hooks for business logic
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+### Troubleshooting
 
-# Troubleshooting
+#### Language/RTL Issues
+- Clear app cache and restart
+- Ensure all translations are properly set up in `src/core/i18n/translations`
+- Check RTL support in custom components
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+#### Build Issues
+- For iOS, ensure CocoaPods is properly installed and run `bundle exec pod install`
+- For Android, check your Android SDK setup and Gradle configuration
 
-# Learn More
+## Contributing
 
-To learn more about React Native, take a look at the following resources:
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
-# CityPulse
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details
