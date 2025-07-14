@@ -10,7 +10,7 @@ City Pulse is a modern React Native mobile app that helps users discover, bookma
 
 | Login | Signup | Home | Event Details | Profile |
 | ----- | ------ | ---- | ------------- | ------- |
-|       |        |      |               |         |
+| ![](./assets/screenshots/login.png) | ![](./assets/screenshots/signup.png) | ![](./assets/screenshots/home.png) | ![](./assets/screenshots/details.png) | ![](./assets/screenshots/profile.png) |
 
 ### RTL (Arabic UI)
 
@@ -18,8 +18,6 @@ City Pulse is a modern React Native mobile app that helps users discover, bookma
 | ------------ | ---------- | --------------- | --------------- | ------------ |
 | ![](./assets/screenshots/login_rtl.png) | ![](./assets/screenshots/signup_rtl.png) | ![](./assets/screenshots/home_rtl.png) | ![](./assets/screenshots/details_rtl.png) | ![](./assets/screenshots/profile_rtl.png) |
 
-<<<<<<< HEAD
-=======
 ---
 
 ## 📹 Demo Video
@@ -28,7 +26,7 @@ Click the link below to watch the full walkthrough of the app:
 
 🔗 [Watch Demo Video](https://res.cloudinary.com/dd3t2lri7/video/upload/v1752482974/walkthrough_s3yeov.mp4)
 
->>>>>>> f6d2b6c3cfaea973d6e901cdfc275aabcd1d4ed9
+---
 
 ## 🌐 Live Demo
 
@@ -192,13 +190,14 @@ project-root/
 │   │   │   └── translations/
 │   │   │       └── index.ts
 │   │   ├── schema/
-│   │   │   ├── loginValidation.schema.ts
-│   │   │   └── signupValidation.schema.ts
+│   │   │   ├── login.schema.ts
+│   │   │   └── signup.schema.ts
 │   │   ├── services/
 │   │   │   ├── api.ts
 │   │   │   ├── biometrics.ts
-│   │   │   ├── credentials.ts
+│   │   │   ├── Credentials.ts
 │   │   │   └── storage.ts
+│   │   ├── store/
 │   │   ├── types/
 │   │   │   └── navigation.types.ts
 │   │   └── utils/
@@ -214,21 +213,15 @@ project-root/
 │   │   ├── EventDetails/
 │   │   │   └── index.tsx
 │   │   ├── Favorite/
-│   │   │   └── index.tsx
 │   │   ├── Home/
-│   │   │   └── index.tsx
 │   │   ├── Login/
-│   │   │   └── index.tsx
 │   │   ├── Profile/
-│   │   │   └── index.tsx
 │   │   ├── SignUp/
-│   │   │   └── index.tsx
 │   │   └── Splash/
-│   │   │   └── index.tsx
 │   │
 │   └── App.tsx
 ├── android/
-└── ios/
+├── ios
 ```
 
 ---
@@ -255,7 +248,7 @@ MIT License – feel free to fork and use!
 
 ## 🔗 Connect
 
-* GitHub: [github.com/](https://github.com/your-username)saifbak
-* LinkedIn: [linkedin.com/in/](https://linkedin.com/in/your-profile)saifbinabdulkarim
+* GitHub: [github.com/](https://github.com/saifbak)
+* LinkedIn: [linkedin.com/in/](https://linkedin.com/in/saifbinabdulkarim)
 
 ---
