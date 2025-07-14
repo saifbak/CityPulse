@@ -18,6 +18,17 @@ City Pulse is a modern React Native mobile app that helps users discover, bookma
 | ------------ | ---------- | --------------- | --------------- | ------------ |
 | ![](./assets/screenshots/login_rtl.png) | ![](./assets/screenshots/signup_rtl.png) | ![](./assets/screenshots/home_rtl.png) | ![](./assets/screenshots/details_rtl.png) | ![](./assets/screenshots/profile_rtl.png) |
 
+<<<<<<< HEAD
+=======
+---
+
+## 📹 Demo Video
+
+Click the link below to watch the full walkthrough of the app:
+
+🔗 [Watch Demo Video](https://res.cloudinary.com/dd3t2lri7/video/upload/v1752482974/walkthrough_s3yeov.mp4)
+
+>>>>>>> f6d2b6c3cfaea973d6e901cdfc275aabcd1d4ed9
 
 ## 🌐 Live Demo
 
@@ -181,14 +192,13 @@ project-root/
 │   │   │   └── translations/
 │   │   │       └── index.ts
 │   │   ├── schema/
-│   │   │   ├── login.schema.ts
-│   │   │   └── signup.schema.ts
+│   │   │   ├── loginValidation.schema.ts
+│   │   │   └── signupValidation.schema.ts
 │   │   ├── services/
 │   │   │   ├── api.ts
 │   │   │   ├── biometrics.ts
-│   │   │   ├── Credentials.ts
+│   │   │   ├── credentials.ts
 │   │   │   └── storage.ts
-│   │   ├── store/
 │   │   ├── types/
 │   │   │   └── navigation.types.ts
 │   │   └── utils/
@@ -204,15 +214,21 @@ project-root/
 │   │   ├── EventDetails/
 │   │   │   └── index.tsx
 │   │   ├── Favorite/
+│   │   │   └── index.tsx
 │   │   ├── Home/
+│   │   │   └── index.tsx
 │   │   ├── Login/
+│   │   │   └── index.tsx
 │   │   ├── Profile/
+│   │   │   └── index.tsx
 │   │   ├── SignUp/
+│   │   │   └── index.tsx
 │   │   └── Splash/
+│   │   │   └── index.tsx
 │   │
 │   └── App.tsx
 ├── android/
-├── ios
+└── ios/
 ```
 
 ---
