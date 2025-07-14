@@ -14,13 +14,13 @@ City Pulse is a modern React Native mobile app that helps users discover, bookma
 
 | Login | Signup | Home | Event Details | Profile |
 | ----- | ------ | ---- | ------------- | ------- |
-|       |        |      |               |         |
+| ![](./assets/screenshots/login.png) | ![](./assets/screenshots/signup.png) | ![](./assets/screenshots/home.png) | ![](./assets/screenshots/details.png) | ![](./assets/screenshots/profile.png) |
 
 ### RTL (Arabic UI)
 
 | تسجيل الدخول | إنشاء حساب | الصفحة الرئيسية | تفاصيل الفعالية | الملف الشخصي |
 | ------------ | ---------- | --------------- | --------------- | ------------ |
-|              |            |                 |                 |              |
+| ![](./assets/screenshots/login_rtl.png) | ![](./assets/screenshots/signup_rtl.png) | ![](./assets/screenshots/home_rtl.png) | ![](./assets/screenshots/details_rtl.png) | ![](./assets/screenshots/profile_rtl.png) |
 
 > 💡 Tip: Store your screenshots under `assets/screenshots/` and update paths accordingly.
 
