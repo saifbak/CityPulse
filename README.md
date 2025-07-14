@@ -189,14 +189,13 @@ project-root/
 │   │   │   └── translations/
 │   │   │       └── index.ts
 │   │   ├── schema/
-│   │   │   ├── login.schema.ts
-│   │   │   └── signup.schema.ts
+│   │   │   ├── loginValidation.schema.ts
+│   │   │   └── signupValidation.schema.ts
 │   │   ├── services/
 │   │   │   ├── api.ts
 │   │   │   ├── biometrics.ts
-│   │   │   ├── Credentials.ts
+│   │   │   ├── credentials.ts
 │   │   │   └── storage.ts
-│   │   ├── store/
 │   │   ├── types/
 │   │   │   └── navigation.types.ts
 │   │   └── utils/
@@ -212,15 +211,21 @@ project-root/
 │   │   ├── EventDetails/
 │   │   │   └── index.tsx
 │   │   ├── Favorite/
+│   │   │   └── index.tsx
 │   │   ├── Home/
+│   │   │   └── index.tsx
 │   │   ├── Login/
+│   │   │   └── index.tsx
 │   │   ├── Profile/
+│   │   │   └── index.tsx
 │   │   ├── SignUp/
+│   │   │   └── index.tsx
 │   │   └── Splash/
+│   │   │   └── index.tsx
 │   │
 │   └── App.tsx
 ├── android/
-├── ios
+└── ios/
 ```
 
 ---
