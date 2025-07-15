@@ -46,7 +46,6 @@ const LoginScreen: FC = () => {
             await setBioEnabled(true);
             return;
         }
-        setCredModalVisible(true);
     };
 
     const handleSaveCreds = async (email: string, password: string) => {
