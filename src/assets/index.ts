@@ -8,4 +8,6 @@ export const Icons = {
   rightIcon: require('../assets/right-arrow.png'),
   leftIcon: require('../assets/left-arrow.png'),
   fingerprint: require('../assets/fingerprint.png'),
+  eyeOpen: require('../assets/open-eye.png'),
+  eyeClosed: require('../assets/close-eye.png'),
 };

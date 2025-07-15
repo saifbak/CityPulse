@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import { View, Button, Text, TouchableOpacity, Image, Alert, I18nManager } from 'react-native';
+import React, { FC, useState } from 'react';
+import { View, Button, Text, TouchableOpacity, Image, Alert, I18nManager, ActivityIndicator, Switch } from 'react-native';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { Formik } from 'formik';
 import { ScaledSheet } from 'react-native-size-matters';
@@ -9,18 +9,59 @@ import { LoginSchema } from '../../core/schema/loginValidation.schema';
 import FormTextInput from '../../components/FormTextInput';
 import { Icons } from '../../assets';
 import { useLocalizationContext } from '../../core/context/LocalizationContext';
+import BiometricCredentialModal from '../../components/Login/BiometricLoginModal';
+import useBioMetricPreferences from '../../core/hooks/useBiometricPreferences';
+import { isBiometricAvailable, promptBiometric } from '../../core/services/biometrics';
 
 const LoginScreen: FC = () => {
+    const [credModalVisible, setCredModalVisible] = useState(false);
     const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
-    const { signIn, biometricLogin } = useAuth();
+
+    const { signIn, isLoading, biometricLogin, saveCredentials } = useAuth();
     const { translate, language } = useLocalizationContext();
+    const { enabled: bioEnabled, toggle: setBioEnabled, loading: prefLoading } = useBioMetricPreferences()
 
     const handleBio = async () => {
-        const response = await biometricLogin();
-        if (!response) Alert.alert(translate('login.biometric'));
+        const success = await biometricLogin();
+        if (success) return;
+        setCredModalVisible(true);
     };
 
-    const isRtl = language === 'ar' ? true : false;
+    const handleEnableBio = async (next: boolean) => {
+        if (!next) {
+            await setBioEnabled(false);
+            return;
+        }
+        const hwOK = await isBiometricAvailable();
+        if (!hwOK) {
+            Alert.alert(translate('login.biometricNotAvailable'));
+            return;
+        }
+
+        const authOK = await promptBiometric();
+        if (!authOK) return;
+
+        const ready = await biometricLogin();
+        if (ready) {
+            await setBioEnabled(true);
+            return;
+        }
+        setCredModalVisible(true);
+    };
+
+    const handleSaveCreds = async (email: string, password: string) => {
+        await signIn(email, password);
+        await saveCredentials(email, password);
+
+        const ok = await biometricLogin();
+        if (ok) {
+            await setBioEnabled(true);
+        } else {
+            Alert.alert(translate('login.biometricFailed'));
+        }
+    };
+
+    const isRtl = language === 'ar' || false;
 
     return (
         <View style={styles.container}>
@@ -57,17 +98,31 @@ const LoginScreen: FC = () => {
                             placeholder={translate('login.email')}
                             secure
                         />
-                        <Button title={translate('login.login')} onPress={handleSubmit as any} disabled={isSubmitting} />
+                        {!isLoading ? <Button title={translate('login.login')} onPress={handleSubmit as any} disabled={isSubmitting} />
+                            : <ActivityIndicator size={"small"} />
+                        }
                     </>
                 )}
             </Formik>
-            <TouchableOpacity style={[styles.bioBtn, { flexDirection: isRtl ? 'row-reverse' : 'row' }]} onPress={handleBio}>
-                <Image source={Icons.fingerprint} style={styles.bioIcon} />
-                <Text style={styles.bioText}>{translate('login.biometric')}</Text>
-            </TouchableOpacity>
+            {!prefLoading && (
+                <View style={styles.switchRow}>
+                    <Text style={styles.switchLabel}>{translate('login.enableBiometric')}</Text>
+                    <Switch value={bioEnabled} onValueChange={handleEnableBio} />
+                </View>
+            )}
+            {bioEnabled &&
+                <TouchableOpacity style={[styles.bioBtn, { flexDirection: isRtl ? 'row-reverse' : 'row' }]} onPress={handleBio}>
+                    <Image source={Icons.fingerprint} style={styles.bioIcon} />
+                    <Text style={styles.bioText}>{translate('login.biometric')}</Text>
+                </TouchableOpacity>}
             <TouchableOpacity style={styles.linkWrapper} onPress={() => navigation.navigate('Signup')}>
                 <Text style={styles.link}>{translate('login.noAccount')}</Text>
             </TouchableOpacity>
+            <BiometricCredentialModal
+                visible={credModalVisible}
+                onClose={() => setCredModalVisible(false)}
+                onSave={handleSaveCreds}
+            />
         </View>
     );
 };
@@ -121,6 +176,17 @@ const styles = ScaledSheet.create({
         fontSize: '14@ms',
         color: '#FF6B00',
         fontWeight: '600'
+
+    },
+    switchRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: '16@vs'
+
+    },
+    switchLabel: {
+        fontSize: '14@ms',
+        fontWeight: '500'
 
     },
 });
