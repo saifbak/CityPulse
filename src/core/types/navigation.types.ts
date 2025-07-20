@@ -1,3 +1,5 @@
+import { NavigatorScreenParams } from "@react-navigation/native";
+
 export type RootStackParamList = {
   Splash: undefined;
   Main: undefined;
@@ -6,14 +8,14 @@ export type RootStackParamList = {
 };
 
 export type BottomTabParamList = {
-  Home: undefined;
+  Home: NavigatorScreenParams<HomeStackParamList>;
   Profile: undefined;
   Favourites: undefined;
 };
 
 export type HomeStackParamList = {
   Home: undefined;
-  EventDetail: { id: string };
+  EventDetail: { id: string | any };
   EventProfile: { id: string };
 };
 

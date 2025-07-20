@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 import { I18nManager } from 'react-native';
-import RNRestart from 'react-native-restart';
+// import RNRestart from 'react-native-restart';
 
 interface Ctx {
   language: 'en' | 'ar';
@@ -22,6 +22,7 @@ const translations: Record<string, Record<'en' | 'ar', string>> = {
   'common.save': { en: 'Save', ar: 'حفظ' },
   'common.loading': { en: 'Loading...', ar: 'جاري التحميل...' },
   'common.search': { en: 'Search', ar: 'بحث' },
+  'common.confirm': { en: 'Confirm', ar: 'تأكيد' },
   'common.welcome': { en: 'Welcome to CityPulse', ar: 'مرحباً بكم في CityPulse' },
   'common.favorites': { en: 'Favorites', ar: 'المفضلة' },
   'login.welcome': {
@@ -34,7 +35,7 @@ const translations: Record<string, Record<'en' | 'ar', string>> = {
   'login.email': { en: 'Email', ar: 'البريد الإلكتروني' },
   'login.password': { en: 'Password', ar: 'كلمة المرور' },
   'login.biometric': { en: 'Login with Biometric', ar: 'تسجيل الدخول بالبصمة' },
-  'login.enableBiometric': { en: 'Enable Biometric Login', ar: 'تفعيل تسجيل الدخول بالبصمة' },
+  'login.enableBiometric': { en: 'Use Biometric', ar: 'تفعيل تسجيل الدخول بالبصمة' },
   'login.biometricFailed': { en: 'Biometric authentication failed', ar: 'فشل التحقق بالبصمة' },
   'login.biometricNotAvailable': {
     en: 'Biometric authentication is not available on this device',
@@ -67,7 +68,7 @@ export const LocalizationProvider: React.FC<{ children: React.ReactNode }> = ({
     if (I18nManager.isRTL !== rtl) {
       I18nManager.forceRTL(rtl);
       I18nManager.allowRTL(rtl);
-      RNRestart.restart();
+      // RNRestart.restart();
     }
   };
 

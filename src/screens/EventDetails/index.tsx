@@ -17,7 +17,7 @@ export default function EventDetailScreen() {
   const navigation = useNavigation<NavigationProp<HomeStackParamList>>();
   const { translate, language } = useLocalizationContext()
   const { id } = params;
-  const isRtl = language === 'ar' ? true : false;
+  const isRtl = language === 'ar'
   const { data: event, isLoading, error } = useQuery<TMEvent, Error>({
     queryKey: ['event', id],
     queryFn: () => fetchEventById(id),

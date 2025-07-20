@@ -17,7 +17,6 @@ const useAuth = () => {
             const res = await auth().signInWithEmailAndPassword(email, password);
             setUser(res.user);
             await AsyncStorage.setItem(EMAIL_KEY, email);
-            await saveCredentials(email, password);
         } catch (err) {
             console.log('Error', err)
         }
@@ -39,25 +38,31 @@ const useAuth = () => {
         await AsyncStorage.removeItem(EMAIL_KEY);
     };
 
-    const biometricLogin = async (): Promise<boolean> => {
-        if (!(await isBiometricAvailable())) return false;
-
-        const creds = await getSavedCredentials();
-        if (!creds) return false;
-
-        const response = await promptBiometric();
-        if (!response) return false;
-
+    const biometricLogin = async () => {
         try {
-            const res = await auth().signInWithEmailAndPassword(creds.email, creds.password);
-            setUser(res.user);
-            return true;
-        } catch {
-            return false;
+
+            if (!(await isBiometricAvailable())) return false;
+            const creds = await getSavedCredentials();
+            if (!creds) return false;
+
+            const response = await promptBiometric();
+            if (!response) return false;
+            if (creds) {
+                setIsLoading(true)
+                const res = await auth().signInWithEmailAndPassword(creds.email, creds.password);
+                setUser(res.user);
+            }
+        } catch (err) {
+            console.log('Error', err)
+        }
+        finally {
+            setIsLoading(false)
         }
     };
 
-    return { user, initialising, signIn, isLoading, signUp, signOut, biometricLogin, saveCredentials };
+    
+
+    return { user, initialising, signIn, isLoading, signUp, signOut, biometricLogin, getSavedCredentials, saveCredentials };
 };
 
 export default useAuth;

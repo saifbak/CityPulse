@@ -15,6 +15,7 @@ import { Icons } from '../assets';          // 👈 add an eye & eye-off icon he
 
 interface Props extends TextInputProps {
   name: string;
+  placeholder: string;
   label?: string;
   secure?: boolean;
   isRtl?: boolean;
@@ -23,13 +24,14 @@ interface Props extends TextInputProps {
 const FormTextInput: React.FC<Props> = ({
   name,
   label,
+  placeholder,
   secure,
   style,
   isRtl = false,
   ...rest
 }) => {
   const [field, meta, helpers] = useField<string>(name);
-  const [hide, setHide] = useState(secure);           // 👈 local state
+  const [hide, setHide] = useState(secure);
 
   const inputStyle: StyleProp<TextStyle> = [
     styles.input,
@@ -45,6 +47,7 @@ const FormTextInput: React.FC<Props> = ({
 
       <View style={styles.row}>
         <TextInput
+          placeholder={placeholder}
           style={[inputStyle, secure && styles.inputWithIcon]}
           value={field.value}
           secureTextEntry={secure ? hide : false}
@@ -90,12 +93,14 @@ const styles = ScaledSheet.create({
     borderColor: '#ccc',
     borderRadius: '5@ms',
     paddingStart: '10@s',
-    paddingEnd: '40@s',        
+    paddingEnd: '40@s',
     fontSize: '14@ms',
     alignSelf: 'stretch',
   },
   inputWithIcon: { paddingEnd: '40@s' },
-  inputRtl: { textAlign: 'right', writingDirection: 'rtl' },
+  inputRtl: {
+    textAlign: 'right'
+  },
 
   eyeBtn: {
     position: 'absolute',

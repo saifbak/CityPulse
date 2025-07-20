@@ -1,11 +1,8 @@
 import React from 'react';
-import { View, Text, Image, Alert, Pressable, ScrollView, I18nManager } from 'react-native';
+import { View, Text, Image, Alert, ScrollView, I18nManager } from 'react-native';
 import { Button } from 'react-native-paper';
-import { useNavigation } from '@react-navigation/native';
-import { ScaledSheet, vs } from 'react-native-size-matters';
+import { ScaledSheet, } from 'react-native-size-matters';
 
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { BottomTabParamList } from '../../core/types/navigation.types';
 import useAuth from '../../core/hooks/useAuth';
 import { useFavourites } from '../../core/hooks/useFavorite';
 import { useLocalizationContext } from '../../core/context/LocalizationContext';
@@ -13,12 +10,9 @@ import Header from '../../components/Header';
 import LanguageSelector from '../../components/LanguageSelector';
 import { Icons } from '../../assets';
 
-type Nav = BottomTabNavigationProp<BottomTabParamList>;
-
 export default function ProfileScreen() {
     const { user, signOut } = useAuth();
     const { favIds } = useFavourites();
-    const nav = useNavigation<Nav>();
     const { translate } = useLocalizationContext();
 
     if (!user) {
@@ -49,12 +43,12 @@ export default function ProfileScreen() {
                 <Text style={styles.name}>{displayName ?? '—'}</Text>
                 <Text style={styles.email}>{email}</Text>
 
-                <Pressable style={styles.favEvents} onPress={() => nav.navigate('Favourites')}>
-                    <Image source={Icons.fav} style={{ width: vs(10), height: vs(15), resizeMode: 'contain' }} />
+                <View style={styles.favEvents} >
+                    <Image source={Icons.fav} style={styles.iconStyle} />
                     <Text style={styles.favs}>
                         {translate('home.favorites')}: <Text style={styles.favCount}>{favIds.length}</Text>
                     </Text>
-                </Pressable>
+                </View>
 
                 <Text style={styles.uid}>UID: {uid}</Text>
 
@@ -113,6 +107,12 @@ const styles = ScaledSheet.create({
         color: '#fff',
         fontWeight: '600'
     },
+    iconStyle: {
+        width: 15,
+        height: 15,
+        marginTop: 10,
+        alignSelf: "center",
+    },
     name: {
         fontSize: '20@ms',
         fontWeight: '600',
@@ -145,6 +145,7 @@ const styles = ScaledSheet.create({
     },
     favEvents: {
         flex: 1,
+        gap: '5@s',
         flexDirection: I18nManager.isRTL ? "row-reverse" : "row",
         justifyContent: "center",
         alignItems: 'center'

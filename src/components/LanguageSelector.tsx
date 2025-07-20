@@ -24,7 +24,7 @@ const LanguageSelector = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{translate('profile.language')}</Text>
+      <Text style={[styles.title, { textAlign: language === 'ar' ? 'right' : 'left' }]}>{translate('profile.language')}</Text>
       <View style={styles.buttonContainer}>
         {languages.map(lang => (
           <TouchableOpacity

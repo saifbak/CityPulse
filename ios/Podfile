@@ -17,6 +17,9 @@ target 'CityPulse' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  pod 'react-native-maps', :path => '../node_modules/react-native-maps', :modular_headers => true
+  pod 'GoogleMaps'
+  pod 'Google-Maps-iOS-Utils'
   pod 'Firebase/Auth'
   pod 'GoogleUtilities',         :modular_headers => true
   pod 'PromisesObjC',            :modular_headers => true

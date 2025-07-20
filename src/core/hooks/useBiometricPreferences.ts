@@ -10,24 +10,26 @@ const STORAGE_KEYS = {
 
 const useBioMetricPreferences = () => {
     const [enabled, setEnabled] = useState(false);
+    const [isBioMetricEnable, seIsBioMetricEnable] = useState(false);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         (async () => {
-            const raw = await StorageService.getItem(STORAGE_KEYS.BIOMETRIC_ENABLED);
-            setEnabled(raw === 'true');
+            const val = await StorageService.getItem(STORAGE_KEYS.BIOMETRIC_ENABLED);
+            seIsBioMetricEnable(val === 'true');
+            setEnabled(val === 'true')
             setLoading(false);
         })();
     }, []);
 
-    const toggle = async (val: boolean) => {
+    const toggleBiometric = async (val: boolean) => {
         setEnabled(val);
         await StorageService.setItem(STORAGE_KEYS.BIOMETRIC_ENABLED, val ? 'true' : 'false');
     };
 
-    const enableBiometricAuth = () => {
+    const enableBiometricAuth = async () => {
         const rnBiometrics = new ReactNativeBiometrics();
-        rnBiometrics.isSensorAvailable()
+        await rnBiometrics.isSensorAvailable()
             .then((resultObject) => {
                 const { available, biometryType } = resultObject;
 
@@ -65,31 +67,14 @@ const useBioMetricPreferences = () => {
             });
     };
 
-    const handleBiometricAuth = async () => {
-        try {
-            const rnBiometrics = new ReactNativeBiometrics();
-            const { success, } = await rnBiometrics.simplePrompt({ promptMessage: 'Authenticate to continue' });
 
-            if (success) {
-                Alert.alert('Success', 'Biometric authentication successful');
-                return true;
-            } else {
-                Alert.alert('Authentication failed', 'Biometric authentication failed');
-                return false;
-            }
-        } catch (error) {
-            console.error('[handleBiometricAuth] Error:', error);
-            Alert.alert('Error', 'Biometric authentication failed from device');
-            return false;
-        }
-    };
 
     return {
         enableBiometricAuth,
-        handleBiometricAuth,
         enabled,
-        toggle,
-        loading
+        toggleBiometric,
+        loading,
+        isBioMetricEnable,
     }
 }
 
