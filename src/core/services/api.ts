@@ -13,7 +13,7 @@ const TICKETMASTER_API_KEY = "WAcgANBttumCxn5nonGYKKqLmYUSJBZm"
 
 
 export async function fetchEventsPage(
-    { keyword = '', city = '', page = 0, size = 20 }: {
+    { keyword = '', city = '', page = 0, size = 10 }: {
         keyword?: string;
         city?: string;
         page: number;
