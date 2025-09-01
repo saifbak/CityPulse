@@ -18,6 +18,7 @@ export default function EventDetailScreen() {
   const { translate, language } = useLocalizationContext()
   const { id } = params;
   const isRtl = language === 'ar'
+  
   const { data: event, isLoading, error } = useQuery<TMEvent, Error>({
     queryKey: ['event', id],
     queryFn: () => fetchEventById(id),

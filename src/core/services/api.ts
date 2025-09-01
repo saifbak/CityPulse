@@ -20,6 +20,7 @@ export async function fetchEventsPage(
         size?: number;
     }
 ): Promise<PageResponse> {
+    
     const qs = new URLSearchParams({
         apikey: TICKETMASTER_API_KEY,
         keyword,

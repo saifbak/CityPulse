@@ -60,10 +60,12 @@ export default function EventsListScreen() {
     if (hasNextPage && !isFetchingNextPage) fetchNextPage();
   };
 
+  const eventData = events.filter(( _, index ) => index % 2 === 0);
+
+
   return (
     <View style={styles.container}>
       <Header title={translate('event.title')} />
-
       <SearchBar
         placeholder={translate('search.keyword')}
         onChangeText={debounced.keyword}
@@ -74,23 +76,25 @@ export default function EventsListScreen() {
         onChangeText={debounced.city}
         style={[styles.search, { textAlign: language === "ar" ? 'right' : "left" }]}
       />
-
       {isLoading ? (
         <ActivityIndicator style={{ marginTop: 20 }} />
       ) : (
         <FlatList
-          data={events}
+          data={eventData}
           keyExtractor={e => e.id}
-          renderItem={({ item }) => (
-            <EventCard
-              style={{ flexDirection: language == "ar" ? "row-reverse" : 'row' }}
-              item={item}
-              isFav={favIds.includes(item.id)}
-              onFavouriteToggle={toggleFav}
-              isRtl={language === 'ar'}
-              onPress={() => nav.navigate('EventDetail', { id: item.id })}
-            />
-          )}
+          renderItem={({ item, }) => {
+            return (
+              <EventCard
+                style={{ flexDirection: language == "ar" ? "row-reverse" : 'row' }}
+                item={item}
+                isFav={favIds.includes(item.id)}
+                onFavouriteToggle={toggleFav}
+                isRtl={language === 'ar'}
+                onPress={() => nav.navigate('EventDetail', { id: item.id })}
+              />
+            )
+          }
+          }
           onEndReached={loadMore}
           onEndReachedThreshold={0.4}
           ListFooterComponent={
